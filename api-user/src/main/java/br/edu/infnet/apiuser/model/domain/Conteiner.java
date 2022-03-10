@@ -1,4 +1,4 @@
-package br.edu.infnet.apiagendamento.model.domain;
+package br.edu.infnet.apiuser.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,7 +17,7 @@ public class Conteiner extends Carga {
 		return "O navio do conteiner "+this.numero+" é o "+super.getNavio()+ "!";
 	}
 
-	public Conteiner(String navio, String documento, String porto) {
+	public Conteiner(String navio, String documento, String porto)  {
 		super(navio, documento, porto);
 	}
 
@@ -62,7 +62,9 @@ public class Conteiner extends Carga {
 		return tamanho;
 	}
 
-	public void setTamanho(int tamanho) {	
+	public void setTamanho(int tamanho)  {
+		
+		
 		this.tamanho = tamanho;
 	}
 

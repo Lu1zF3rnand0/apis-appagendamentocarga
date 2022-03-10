@@ -1,4 +1,4 @@
-package br.edu.infnet.apiagendamento.model.domain;
+package br.edu.infnet.apicliente.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -62,7 +62,8 @@ public class Conteiner extends Carga {
 		return tamanho;
 	}
 
-	public void setTamanho(int tamanho) {	
+	public void setTamanho(int tamanho) {
+		
 		this.tamanho = tamanho;
 	}
 

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import br.edu.infnet.apicarga.exceptions.PortoInvalidoException;
-import br.edu.infnet.apicarga.exceptions.TamanhoInvalidoException;
 
 
 @Entity
@@ -65,11 +64,7 @@ public class Conteiner extends Carga {
 		return tamanho;
 	}
 
-	public void setTamanho(int tamanho) throws TamanhoInvalidoException {
-		
-		if (tamanho != 40 && tamanho != 20) {
-			throw new TamanhoInvalidoException("Tamanho do conteiner inválido!");
-		}
+	public void setTamanho(int tamanho)  {
 		
 		this.tamanho = tamanho;
 	}

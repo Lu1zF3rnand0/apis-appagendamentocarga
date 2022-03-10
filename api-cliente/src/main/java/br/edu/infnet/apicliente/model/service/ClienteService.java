@@ -21,6 +21,11 @@ public class ClienteService {
 	public List<Cliente> obterLista() {
 		return clienteRepository.findAll();
 	}
+	
+	public List<Cliente> obterLista(Integer id) {
+		return clienteRepository.findAll(id);
+		
+	}
 
 	public void incluir(Cliente cliente) {
 		clienteRepository.save(cliente);

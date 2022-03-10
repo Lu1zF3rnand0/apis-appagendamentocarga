@@ -26,10 +26,16 @@ public class ClienteController {
 		return clienteService.obterLista();
 	}
 	
+	@GetMapping(value = "/{id}/listarPorUser")
+	public List<Cliente> obterLista(@PathVariable Integer id) {
+		return clienteService.obterLista(id);
+	}
+	
 	@PostMapping(value = "/incluir")
 	public void incluir(@RequestBody Cliente cliente) {
 		clienteService.incluir(cliente);
 	}
+	
 
 	@DeleteMapping(value = "/{id}/excluir")
 	public void excluir(@PathVariable Integer id) {

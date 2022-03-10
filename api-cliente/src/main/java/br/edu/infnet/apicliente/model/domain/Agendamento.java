@@ -1,4 +1,4 @@
-package br.edu.infnet.apicarga.model.domain;
+package br.edu.infnet.apicliente.model.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "TAgendamento")
 public class Agendamento {
@@ -31,11 +29,9 @@ public class Agendamento {
 	
 	@OneToOne(cascade = CascadeType.DETACH) 
 	@JoinColumn(name = "idCliente")
-	@JsonIgnore
 	private Cliente cliente;
 	
 	@ManyToMany(cascade = CascadeType.DETACH)
-	@JsonIgnore
 	private List<Carga> cargas;
 	
 	@ManyToOne

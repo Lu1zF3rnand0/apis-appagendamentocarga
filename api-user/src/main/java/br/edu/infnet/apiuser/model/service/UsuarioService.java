@@ -11,26 +11,26 @@ import br.edu.infnet.apiuser.model.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
 	public Usuario validar(String email, String senha) {
-		
+
 		return usuarioRepository.autenticacao(email, senha);
 	}
-	
+
 	public Long obterQtd() {
 		return usuarioRepository.count();
 	}
-	
+
 	public void incluir(Usuario usuario) {
-		
+
 		usuarioRepository.save(usuario);
 	}
 
 	public List<Usuario> obterLista() {
-		
+
 		return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 	}
 
@@ -40,8 +40,8 @@ public class UsuarioService {
 	}
 
 	public void excluir(Integer id) {
-		
-		usuarioRepository.deleteById(id);		
+
+		usuarioRepository.deleteById(id);
 	}
-	
+
 }

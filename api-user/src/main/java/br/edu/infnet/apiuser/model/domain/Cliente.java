@@ -1,4 +1,4 @@
-package br.edu.infnet.apicliente.model.domain;
+package br.edu.infnet.apiuser.model.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "TCliente")
@@ -24,11 +26,15 @@ public class Cliente {
 	private String email;
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
+	@JsonIgnore
 	private Usuario usuario;
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 	
+	protected static int cont;
+	
+
 	public Cliente() {
 		//this.id = cont++;
 		

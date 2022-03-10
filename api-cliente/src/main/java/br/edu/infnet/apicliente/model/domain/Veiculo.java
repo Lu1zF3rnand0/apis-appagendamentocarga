@@ -1,4 +1,4 @@
-package br.edu.infnet.apiagendamento.model.domain;
+package br.edu.infnet.apicliente.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -54,6 +54,7 @@ public class Veiculo extends Carga {
 		return chassi;
 	}
 	public void setChassi(String chassi) {
+		
 		this.chassi = chassi;
 	}
 	

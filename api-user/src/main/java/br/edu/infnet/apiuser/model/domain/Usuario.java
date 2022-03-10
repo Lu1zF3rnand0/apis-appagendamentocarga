@@ -1,11 +1,14 @@
 package br.edu.infnet.apiuser.model.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,15 +23,24 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private boolean admin;
-	
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="idEndereco")
+	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Cliente> clientes;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Carga> cargas;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Agendamento> agendamentos;
 	
 	public Usuario() {
-   // TODO document why this constructor is empty
- }
+	}
 	
 	@Override
 	public String toString() {
@@ -67,6 +79,18 @@ public class Usuario {
 		this.admin = admin;
 	}
 
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+	
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+//	public void setSolicitantes(List<Cliente> clientes) {
+//		this.clientes = clientes;
+//	}
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -74,6 +98,23 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public List<Carga> getCargas() {
+		return cargas;
+	}
+
+	public void setCargas(List<Carga> cargas) {
+		this.cargas = cargas;
+	}
+
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
+	}
+
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
+	}
+	
 	
 	
 	

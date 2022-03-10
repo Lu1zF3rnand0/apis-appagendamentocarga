@@ -1,4 +1,4 @@
-package br.edu.infnet.apicarga.model.domain;
+package br.edu.infnet.apiuser.model.domain;
 
 import java.util.List;
 
@@ -16,8 +16,6 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
-import br.edu.infnet.apicarga.exceptions.PortoInvalidoException;
 
 @Entity
 @Table(name = "TCarga")
@@ -46,17 +44,14 @@ public abstract class Carga {
 	
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
+	@JsonIgnore
 	private Usuario usuario;
 
 
-	public Carga(String navio, String documento, String porto) throws PortoInvalidoException {
+	public Carga(String navio, String documento, String porto) {
 		this.navio = navio;
 		this.documento = documento;
 		this.porto = porto;
-
-		if (porto.length() != 5) {
-			throw new PortoInvalidoException("Código do porto inválido!");
-		}
 	}
 
 	public Carga() {

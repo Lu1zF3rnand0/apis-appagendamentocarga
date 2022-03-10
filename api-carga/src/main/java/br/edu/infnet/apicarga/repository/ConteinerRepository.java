@@ -14,4 +14,7 @@ public interface ConteinerRepository extends CrudRepository<Conteiner, Integer> 
 
 	@Query("from Conteiner")
 	List<Conteiner> findAll(Sort by);
+	
+	@Query("from Conteiner c where c.usuario.id = :userid")
+	List<Conteiner> findAll(Integer userid, Sort by);
 }

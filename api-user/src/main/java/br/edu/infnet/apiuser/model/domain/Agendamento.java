@@ -1,4 +1,4 @@
-package br.edu.infnet.apicarga.model.domain;
+package br.edu.infnet.apiuser.model.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +40,7 @@ public class Agendamento {
 	
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
+	@JsonIgnore
 	private Usuario usuario;
 	
 	@Override

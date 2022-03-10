@@ -1,4 +1,4 @@
-package br.edu.infnet.apiagendamento.model.domain;
+package br.edu.infnet.apicliente.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -52,6 +52,7 @@ public class CargaSolta extends Carga {
 	}
 	
 	public void setMercadoria(String mercadoria) {
+
 		
 		this.mercadoria = mercadoria;
 	}

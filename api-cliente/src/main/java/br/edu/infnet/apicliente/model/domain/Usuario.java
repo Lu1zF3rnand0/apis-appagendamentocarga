@@ -1,13 +1,19 @@
 package br.edu.infnet.apicliente.model.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "TUsuario")
@@ -21,8 +27,23 @@ public class Usuario {
 	private String senha;
 	private boolean admin;
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idendereco")
-	private Endereco endereco;	
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	@JsonBackReference
+	private List<Cliente> clientes;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	@JsonIgnore
+	private List<Carga> cargas;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	@JsonIgnore
+	private List<Agendamento> agendamentos;
 	
 	public Usuario() {
 	}
@@ -64,6 +85,15 @@ public class Usuario {
 		this.admin = admin;
 	}
 
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+	
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -71,4 +101,24 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public List<Carga> getCargas() {
+		return cargas;
+	}
+
+	public void setCargas(List<Carga> cargas) {
+		this.cargas = cargas;
+	}
+
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
+	}
+
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
+	}
+	
+	
+	
+	
 }
