@@ -1,4 +1,4 @@
-package br.edu.infnet.apiuser.controller;
+package br.edu.infnet.apilog.controller;
 
 import java.util.List;
 
@@ -11,38 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.infnet.apiuser.model.domain.Usuario;
-import br.edu.infnet.apiuser.model.service.UsuarioService;
+import br.edu.infnet.apilog.model.domain.Log;
+import br.edu.infnet.apilog.model.service.LogService;
 
 @RestController
-@RequestMapping("/api/usuario")
-public class UsuarioController {
+@RequestMapping("/api/log")
+public class LogController {
 	
 	@Autowired
-	private UsuarioService usuarioService;
-	
-	
+	private LogService logService;
+
 	@GetMapping(value = "/listar")
-	public List<Usuario> obterLista() {
-		
-		return usuarioService.obterLista();
+	public List<Log> obterLista() {
+		return logService.obterLista();
+	}
+
+	@GetMapping(value = "/qtde")
+	public Long obterQuantidade() {
+		return logService.obterQtde();
 	}
 
 	@PostMapping(value = "/incluir")
-	public void incluir(@RequestBody Usuario usuario) {
-		
-		usuarioService.incluir(usuario);
+	public void incluir(@RequestBody Log log) {		
+		logService.incluir(log);
 	}
 
 	@DeleteMapping(value = "/{id}/excluir")
 	public void excluir(@PathVariable Integer id) {
-		
-		usuarioService.excluir(id);	
+		logService.excluir(id);
 	}
-	
-	@PostMapping(value = "/{email}/{senha}/validar")
-	public Usuario validar(@PathVariable String email, @PathVariable String senha) {
-		return usuarioService.autenticacao(email, senha);
-	}
-	
 }
