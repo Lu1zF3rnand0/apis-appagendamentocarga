@@ -15,5 +15,5 @@ public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
 	public List<Cliente> findAll();
 	
 	@Query("from Cliente c where c.usuario.id = :userid")
-	public List<Cliente> findAll(Integer userid);
+	public List<Cliente> findByUser(Integer userid);
 }

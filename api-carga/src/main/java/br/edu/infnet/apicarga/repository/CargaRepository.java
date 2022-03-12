@@ -14,5 +14,8 @@ public interface CargaRepository extends CrudRepository<Carga, Integer> {
 
 	@Query("from Carga")
 	List<Carga> findAll(Sort by);
+	
+	@Query("from Carga c where c.usuario.id = :userid")
+	List<Carga> findByUser(Integer userid);
 
 }

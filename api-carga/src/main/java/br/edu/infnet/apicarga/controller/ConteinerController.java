@@ -20,20 +20,19 @@ public class ConteinerController {
 	@Autowired
 	private ConteinerService conteinerService;
 
-	
 	@PostMapping(value = "/conteiner/incluir")
 	public void incluir(@RequestBody Conteiner conteiner) {
 		conteinerService.incluir(conteiner);
 	}
-	
+
 	@GetMapping(value = "/conteiner/listar")
-	public List<Conteiner> obterLista(){
+	public List<Conteiner> obterLista() {
 		return conteinerService.obterLista();
 	}
 	
-	@GetMapping(value = "/conteiner/{id}/listar")
-	public List<Conteiner> obterLista(@PathVariable Integer id){
-		return conteinerService.obterLista(id);
+	@GetMapping(value = "/conteiner/{id}/listarPorUser")
+	public List<Conteiner> obterPorUser(@PathVariable Integer id) {
+		return conteinerService.obterPorUser(id);
 	}
 
 }

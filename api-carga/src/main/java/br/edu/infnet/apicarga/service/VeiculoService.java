@@ -22,5 +22,9 @@ public class VeiculoService {
 	public List<Veiculo> obterLista(){
 		return veiculoRepository.findAll(Sort.by(Sort.Direction.ASC, "chassi"));
 	}
+	
+	public List<Veiculo> obterPorUser(Integer id) {
+		return veiculoRepository.findByUser(id);
+	}
 
 }

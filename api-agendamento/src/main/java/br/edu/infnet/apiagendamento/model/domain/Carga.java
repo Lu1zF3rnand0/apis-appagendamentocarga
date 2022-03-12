@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -39,7 +40,7 @@ public abstract class Carga {
 	private String porto;
 	
 	@ManyToMany(mappedBy = "cargas")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Agendamento> agendamentos;
 	
 	@ManyToOne

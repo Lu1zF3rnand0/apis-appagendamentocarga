@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -35,7 +36,7 @@ public class Agendamento {
 	private Cliente cliente;
 	
 	@ManyToMany(cascade = CascadeType.DETACH)
-	@JsonIgnore
+	@JsonBackReference
 	private List<Carga> cargas;
 	
 	@ManyToOne

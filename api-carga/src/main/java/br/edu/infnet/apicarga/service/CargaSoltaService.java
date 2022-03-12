@@ -22,5 +22,9 @@ public class CargaSoltaService {
 	public List<CargaSolta> obterLista(){
 		return cargaSoltaRepository.findAll(Sort.by(Sort.Direction.ASC, "mercadoria"));
 	}
+	
+	public List<CargaSolta> obterPorUser(Integer id) {
+		return cargaSoltaRepository.findByUser(id);
+	}
 
 }

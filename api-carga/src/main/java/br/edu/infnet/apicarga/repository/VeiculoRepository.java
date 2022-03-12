@@ -14,5 +14,8 @@ public interface VeiculoRepository extends CrudRepository<Veiculo, Integer> {
 	
 	@Query("from Veiculo")
 	List<Veiculo> findAll(Sort by);
+	
+	@Query("from Veiculo v where v.usuario.id = :userid")
+	List<Veiculo> findByUser(Integer userid);
 
 }

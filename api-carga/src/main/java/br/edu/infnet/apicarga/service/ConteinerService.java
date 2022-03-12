@@ -23,8 +23,8 @@ public class ConteinerService {
 		return conteinerRepository.findAll(Sort.by(Sort.Direction.ASC, "numero"));
 	}
 	
-	public List<Conteiner> obterLista(Integer id){
-		return conteinerRepository.findAll(id, Sort.by(Sort.Direction.ASC, "numero"));
+	public List<Conteiner> obterPorUser(Integer id) {
+		return conteinerRepository.findByUser(id);
 	}
 	
 }

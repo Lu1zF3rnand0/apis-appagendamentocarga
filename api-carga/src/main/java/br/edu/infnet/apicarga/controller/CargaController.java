@@ -25,6 +25,16 @@ public class CargaController {
 	public List<Carga> obterLista() {
 		return cargaService.obterLista();
 	}
+	
+	@GetMapping(value = "/{id}/listar")
+	public Carga obterPorId(@PathVariable Integer id) {
+		return cargaService.obterPorId(id);
+	}
+	
+	@GetMapping(value = "/{id}/listarPorUser")
+	public List<Carga> obterPorUser(@PathVariable Integer id) {
+		return cargaService.obterPorUser(id);
+	}
 
 	@DeleteMapping(value = "/{id}/excluir")
 	public void excluir(@PathVariable Integer id) {

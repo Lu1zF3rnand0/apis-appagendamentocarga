@@ -30,10 +30,13 @@ public class CargaService {
 	public Long obterQtd() {
 		return cargaRepository.count();
 	}
-	
-	
+		
 	public void incluir(Carga carga) {
 		cargaRepository.save(carga);
+	}
+	
+	public List<Carga> obterPorUser(Integer id) {
+		return cargaRepository.findByUser(id);
 	}
 	
 	

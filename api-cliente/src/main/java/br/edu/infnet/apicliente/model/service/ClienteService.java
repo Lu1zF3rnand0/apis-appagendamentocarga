@@ -22,11 +22,14 @@ public class ClienteService {
 		return clienteRepository.findAll();
 	}
 	
-	public List<Cliente> obterLista(Integer id) {
-		return clienteRepository.findAll(id);
-		
+	public Cliente obterPorId(Integer id) {
+		return clienteRepository.findById(id).orElse(null);	
 	}
-
+	
+	public List<Cliente> obterPorUser(Integer id) {
+		return clienteRepository.findByUser(id);	
+	}
+		
 	public void incluir(Cliente cliente) {
 		clienteRepository.save(cliente);
 	}
